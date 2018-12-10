@@ -2,7 +2,7 @@ import React from "react";
 
 const ArticleCard = ({ articles }) => {
   return (
-    <div>
+    <div className="main">
       <ul>
         {articles.map(({ article_id, title }) => {
           return (

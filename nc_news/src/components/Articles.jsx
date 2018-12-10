@@ -17,8 +17,10 @@ class Articles extends Component {
   componentDidMount() {
     this.fetchArticles();
   }
-  componentDidUpdate(prevProps) {
-    console.log(prevProps);
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.articles !== this.state.articles) {
+      this.fetchArticles();
+    }
   }
   fetchArticles = () => {
     const { slug } = this.props;
