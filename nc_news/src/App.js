@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import Nav from "./components/Nav";
-import Articles from "./components/Articles";
 import Sidebar from "./components/Sidebar";
 import Footer from "./components/Footer";
 import * as api from "./api";
@@ -20,7 +19,6 @@ class App extends Component {
         <nav className="nav">
           <Nav topics={topics} />
         </nav>
-        <Articles />
         <Sidebar />
         <Footer />
         <Routes />
