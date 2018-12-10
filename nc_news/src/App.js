@@ -6,6 +6,7 @@ import Articles from "./components/Articles";
 import Sidebar from "./components/Sidebar";
 import Footer from "./components/Footer";
 import * as api from "./api";
+import Routes from "./components/Routes";
 
 class App extends Component {
   state = {
@@ -13,14 +14,16 @@ class App extends Component {
   };
   render() {
     const { topics } = this.state;
-    console.log(topics);
     return (
       <div className="App">
         <Header />
-        <Nav topics={topics} />
+        <nav className="nav">
+          <Nav topics={topics} />
+        </nav>
         <Articles />
         <Sidebar />
         <Footer />
+        <Routes />
       </div>
     );
   }
