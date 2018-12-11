@@ -11,14 +11,14 @@ class PostTopic extends Component {
     const { newSubmission, acceptedResponse, response } = this.state;
     return (
       <div className="main">
-        <form type="input" onSubmit={this.handleSubmit}>
+        <form type="input" onSubmit={() => this.handleSubmit}>
           <div className="inputSlug">
             <label htmlFor="slug">Name of Topic:</label>
             <input
               type="text"
               id="slug"
               value={newSubmission.slug}
-              onChange={this.handleChange}
+              onChange={() => this.handleChange}
               required
             />
           </div>
@@ -28,7 +28,7 @@ class PostTopic extends Component {
               type="text"
               id="description"
               value={newSubmission.description}
-              onChange={this.handleChange}
+              onChange={() => this.handleChange}
               required
             />
           </div>

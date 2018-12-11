@@ -15,10 +15,10 @@ class App extends Component {
   };
 
   render() {
-    const { topics } = this.state;
+    const { topics, user } = this.state;
     return (
       <div className="App">
-        <Auth>
+        <Auth user={user}>
           <Header />
           <nav className="nav">
             <Nav topics={topics} />
@@ -38,6 +38,15 @@ class App extends Component {
       .getTopics()
       .then(topics => {
         this.setState({ topics });
+      })
+      .catch(console.log);
+  };
+  authenticateUser = () => {
+    const { user } = this.state;
+    api
+      .getUser(user)
+      .then(response => {
+        this.setState({ response });
       })
       .catch(console.log);
   };
