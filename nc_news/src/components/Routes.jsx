@@ -3,6 +3,8 @@ import React from "react";
 import Articles from "./Articles";
 import Topics from "./Topics";
 import PostTopic from "./PostTopic";
+import Article from "./Article";
+import Comments from "./Comments";
 
 const Routes = ({ topics }) => {
   return (
@@ -12,6 +14,8 @@ const Routes = ({ topics }) => {
       <Articles path="/topics/:slug/articles" />
       <Topics path="/topics" topics={topics} />
       <PostTopic path="/topics/createtopic" />
+      <Article path="/articles/:article_id" />
+      <Comments path="/articles/:article_id/comments" />
     </Router>
   );
 };
