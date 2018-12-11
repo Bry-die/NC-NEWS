@@ -18,7 +18,7 @@ class App extends Component {
     const { topics, user } = this.state;
     return (
       <div className="App">
-        <Auth user={user}>
+        <Auth user={user} fetchUser={this.fetchUser}>
           <Header />
           <nav className="nav">
             <Nav topics={topics} />
@@ -32,6 +32,8 @@ class App extends Component {
   }
   componentDidMount() {
     this.fetchTopics();
+    this.fetchUser();
+    console.log(this.state.user);
   }
   fetchTopics = () => {
     api
@@ -41,14 +43,8 @@ class App extends Component {
       })
       .catch(console.log);
   };
-  authenticateUser = () => {
-    const { user } = this.state;
-    api
-      .getUser(user)
-      .then(response => {
-        this.setState({ response });
-      })
-      .catch(console.log);
+  login = () => {
+    this.setState({ user });
   };
 }
 
