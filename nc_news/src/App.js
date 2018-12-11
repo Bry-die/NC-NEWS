@@ -6,22 +6,27 @@ import Sidebar from "./components/Sidebar";
 import Footer from "./components/Footer";
 import * as api from "./api";
 import Routes from "./components/Routes";
+import Auth from "./components/Auth";
 
 class App extends Component {
   state = {
-    topics: []
+    topics: [],
+    user: null
   };
+
   render() {
     const { topics } = this.state;
     return (
       <div className="App">
-        <Header />
-        <nav className="nav">
-          <Nav topics={topics} />
-        </nav>
-        <Sidebar />
-        <Footer />
-        <Routes topics={topics} />
+        <Auth>
+          <Header />
+          <nav className="nav">
+            <Nav topics={topics} />
+          </nav>
+          <Sidebar />
+          <Footer />
+          <Routes topics={topics} />
+        </Auth>
       </div>
     );
   }
