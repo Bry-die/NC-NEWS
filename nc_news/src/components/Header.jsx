@@ -2,9 +2,13 @@ import React from "react";
 
 const Header = () => {
   return (
-    <>
-      <h1 className="header">NC News</h1>
-    </>
+    <div className="header">
+      <img
+        className="logo"
+        src="https://northcoders.com/images/logos/learn_to_code_manchester_rw_original.png"
+        alt="logo"
+      />
+    </div>
   );
 };
 

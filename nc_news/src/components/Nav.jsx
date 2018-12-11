@@ -4,14 +4,21 @@ import { Link } from "@reach/router";
 const Nav = ({ topics }) => {
   return (
     <>
-      <Link to="/">articles</Link>
-      {topics.map(({ slug }) => (
-        <Link key={slug} to={`/topics/${slug}/articles`}>
-          {slug}
-        </Link>
-      ))}
-      <Link to="/topics" topics={topics}>
-        topics
+      <Link to="/" className="Link">
+        Articles
+      </Link>
+      {topics.map(({ slug }) => {
+        slug = slug.split("");
+        slug[0] = slug[0].toUpperCase();
+        slug = slug.join("");
+        return (
+          <Link key={slug} to={`/topics/${slug}/articles`} className="Link">
+            {slug}
+          </Link>
+        );
+      })}
+      <Link to="/topics" topics={topics} className="Link">
+        Topics
       </Link>
     </>
   );

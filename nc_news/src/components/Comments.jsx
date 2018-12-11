@@ -6,6 +6,7 @@ class Comments extends Component {
     comments: []
   };
   render() {
+    const { comments } = this.state;
     return (
       <div>
         <p className="main">Comments here</p>

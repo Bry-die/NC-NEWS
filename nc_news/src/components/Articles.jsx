@@ -8,6 +8,7 @@ class Articles extends Component {
   };
   render() {
     const { articles } = this.state;
+    console.log(articles);
     return (
       <div className="main">
         <ArticleCard articles={articles} />

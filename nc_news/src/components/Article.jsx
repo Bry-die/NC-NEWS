@@ -11,12 +11,15 @@ class Article extends Component {
     return (
       <div className="main">
         <h3>{article.title}</h3>
+        <p>{article.body} </p>
         <h4>{article.author}</h4>
         <h5>{article.topic}</h5>
         <h5>{article.comment_count}</h5>
         <h5>{article.votes}</h5>
         <h5>{article.created_at}</h5>
-        <Link to={`/articles/${article.article_id}/comments`}>Comments</Link>
+        <Link to={`/articles/${article.article_id}/comments`} className="Link">
+          Comments
+        </Link>
       </div>
     );
   }
