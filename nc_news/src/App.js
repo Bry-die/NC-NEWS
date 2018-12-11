@@ -21,7 +21,7 @@ class App extends Component {
         </nav>
         <Sidebar />
         <Footer />
-        <Routes />
+        <Routes topics={topics} />
       </div>
     );
   }

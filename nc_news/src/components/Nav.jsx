@@ -10,6 +10,9 @@ const Nav = ({ topics }) => {
           {slug}
         </Link>
       ))}
+      <Link to="/topics" topics={topics}>
+        topics
+      </Link>
     </>
   );
 };
