@@ -16,7 +16,7 @@ const Routes = ({ topics, user }) => {
       <PostArticle path="/topics/:slug/articles/postarticle" user={user} />
       <Topics path="/topics" topics={topics} />
       <PostTopic path="/topics/createtopic" />
-      <Article path="/articles/:article_id" />
+      <Article path="/articles/:article_id" user={user} />
     </Router>
   );
 };

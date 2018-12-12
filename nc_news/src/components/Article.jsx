@@ -2,13 +2,15 @@ import React, { Component } from "react";
 import * as api from "../api";
 import { Link } from "@reach/router";
 import Comments from "./Comments";
+import PostComment from "./PostComment";
 
 class Article extends Component {
   state = {
-    article: {}
+    article: {},
+    comments: []
   };
   render() {
-    const { article } = this.state;
+    const { article, comments } = this.state;
     return (
       <div className="main">
         <h3>{article.title}</h3>
@@ -22,14 +24,32 @@ class Article extends Component {
         }`}</Link>
         <h5>{`Comment count: ${article.comment_count}`}</h5>
         <div className="comments">
-          <Comments article_id={this.props.article_id} />
+          <PostComment
+            article={article}
+            comments={comments}
+            article_id={this.props.article_id}
+            user={this.props.user}
+            fetchArticle={this.fetchArticle}
+            fetchComments={this.fetchComments}
+          />
+          <Comments comments={comments} />
         </div>
       </div>
     );
   }
   componentDidMount() {
     this.fetchArticle();
+    this.fetchComments();
   }
+  fetchComments = () => {
+    const { article_id } = this.props;
+    api
+      .getComments(article_id)
+      .then(comments => {
+        this.setState({ comments });
+      })
+      .catch(console.log);
+  };
   fetchArticle = () => {
     const { article_id } = this.props;
     api
