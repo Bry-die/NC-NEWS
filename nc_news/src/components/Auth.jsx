@@ -5,7 +5,7 @@ const Auth = ({ children, user, fetchUser }) => {
   if (user) {
     return children;
   } else {
-    return <Login fetchUser={fetchUser} user={user} />;
+    return <Login login={Login} user={user} />;
   }
 };
 

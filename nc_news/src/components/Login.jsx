@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import * as api from "../api";
 
 class Login extends Component {
   state = {
@@ -6,9 +7,9 @@ class Login extends Component {
   };
   render() {
     const { input } = this.state;
-    const { login } = this.props; 
+    console.log(input);
     return (
-      <form onSubmit={() => login()}>
+      <form onSubmit={e => this.handleSubmit(e)}>
         <label htmlFor="username">USERNAME:</label>
         <input
           type="text"
@@ -16,11 +17,11 @@ class Login extends Component {
           value={this.state.input}
           onChange={this.handleChange}
         />
+        <button>Login</button>
       </form>
     );
   }
   handleChange = event => {
-    console.log(this.state.input);
     event.preventDefault();
     const { value } = event.target;
     this.setState(prevState => ({
@@ -28,17 +29,16 @@ class Login extends Component {
       input: value
     }));
   };
-  handleSubmit = () => {
+  handleSubmit = event => {
+    event.preventDefault();
     const { input } = this.state;
-    console.log(input);
     api
       .getUser(input)
-      .then(input => {
-        this.props.login();
+      .then(user => {
+        this.props.login(user);
       })
       .catch(console.log);
   };
-  }
 }
 
 export default Login;
