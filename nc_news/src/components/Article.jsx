@@ -13,7 +13,7 @@ class Article extends Component {
       <div className="main">
         <h3>{article.title}</h3>
         <div className="titleDate">
-          <h4>{`By ${article.author}`}</h4>
+          <h4 className="articleAuthor">{`By ${article.author}`}</h4>
           <h5>{article.created_at}</h5>
         </div>
         <p>{article.body} </p>

@@ -103,3 +103,20 @@ h5 {
   margin-bottom: 1%;
   margin-top: 0%;
 }
+
+.comments {
+  border: 1px solid orange;
+  background-color: rgb(255, 165, 0, 0.1);
+}
+
+p {
+  margin: 0%;
+  font-size: 70%;
+}
+
+.articleAuthor,
+.titleDate {
+  margin: 1%;
+  margin-left: 0%;
+  font-size: 70%;
+}
