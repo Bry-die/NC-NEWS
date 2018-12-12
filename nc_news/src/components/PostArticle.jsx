@@ -38,7 +38,9 @@ class PostArticle extends Component {
         {acceptedResponse && (
           <ul>
             <li>SUCCESS!</li>
-            <Link to={`/articles`}>View your article!</Link>
+            <Link to={`/articles/${this.state.response.article_id}`}>
+              View your article!
+            </Link>
           </ul>
         )}
       </div>
@@ -58,9 +60,8 @@ class PostArticle extends Component {
   handleSubmit = event => {
     event.preventDefault();
     const { newSubmission } = this.state;
-    newSubmission.user_id = this.props.user_id;
-    api.postArticle(newSubmission).then(article => {
-      console.log(article);
+    newSubmission.user_id = this.props.user.user_id;
+    api.postArticle(this.props.slug, newSubmission).then(article => {
       this.setState(
         prevState => ({
           ...prevState,

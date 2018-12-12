@@ -25,7 +25,7 @@ class App extends Component {
           </nav>
           <Sidebar />
           <Footer />
-          <Routes topics={topics} />
+          <Routes topics={topics} user={user} />
         </Auth>
       </div>
     );
