@@ -7,10 +7,20 @@ class Comments extends Component {
   };
   render() {
     const { comments } = this.state;
+    console.log(comments);
     return (
-      <div>
-        <p className="main">Comments here</p>
-      </div>
+      <>
+        {comments.map(({ votes, created_at, author, body, comment_id }) => {
+          return (
+            <>
+              <h5>{author}</h5>
+              <h6>{created_at}</h6>
+              <p>{body}</p>
+              <h6>{votes}</h6>
+            </>
+          );
+        })}
+      </>
     );
   }
   componentDidMount() {
