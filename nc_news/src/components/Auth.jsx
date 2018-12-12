@@ -1,11 +1,11 @@
 import React from "react";
 import Login from "./Login";
 
-const Auth = ({ children, user, fetchUser }) => {
+const Auth = ({ children, user, login }) => {
   if (user) {
     return children;
   } else {
-    return <Login login={Login} user={user} />;
+    return <Login login={login} user={user} />;
   }
 };
 

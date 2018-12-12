@@ -19,7 +19,7 @@ class Articles extends Component {
     this.fetchArticles();
   }
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.articles !== this.state.articles) {
+    if (prevProps.slug !== this.props.slug) {
       this.fetchArticles();
     }
   }

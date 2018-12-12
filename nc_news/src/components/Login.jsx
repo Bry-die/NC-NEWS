@@ -3,10 +3,11 @@ import * as api from "../api";
 
 class Login extends Component {
   state = {
-    input: ""
+    input: "",
+    error: ""
   };
   render() {
-    const { input } = this.state;
+    const { input, error } = this.state;
     console.log(input);
     return (
       <form onSubmit={e => this.handleSubmit(e)}>
@@ -18,6 +19,7 @@ class Login extends Component {
           onChange={this.handleChange}
         />
         <button>Login</button>
+        {error && <p>{error}</p>}
       </form>
     );
   }
@@ -37,7 +39,11 @@ class Login extends Component {
       .then(user => {
         this.props.login(user);
       })
-      .catch(console.log);
+      .catch(err => {
+        this.setState({
+          error: "Sorry this username doesn't exist."
+        });
+      });
   };
 }
 

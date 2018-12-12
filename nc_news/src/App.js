@@ -19,7 +19,7 @@ class App extends Component {
     return (
       <div className="App">
         <Auth user={user} login={this.login}>
-          <Header />
+          <Header user={user} />
           <nav className="nav">
             <Nav topics={topics} />
           </nav>
