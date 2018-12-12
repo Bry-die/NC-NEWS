@@ -27,12 +27,6 @@ class PostComment extends Component {
       </div>
     );
   }
-  componentDidUpdate(prevProps) {
-    if (prevProps.article.comment_count !== this.props.article.comment_count) {
-      this.props.fetchComments();
-      this.props.fetchArticle();
-    }
-  }
   handleChange = event => {
     event.preventDefault();
     const { id, value } = event.target;

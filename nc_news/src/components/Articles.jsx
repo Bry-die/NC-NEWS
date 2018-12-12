@@ -6,12 +6,19 @@ import { Link } from "@reach/router";
 class Articles extends Component {
   state = {
     articles: [],
-    p: 1
+    failDelete: ""
   };
   render() {
-    const { articles } = this.state;
+    const { articles, failDelete } = this.state;
+    console.log(failDelete);
+    console.log(this.props);
     return (
       <>
+        {failDelete && (
+          <div className="header">
+            <p>{failDelete}</p>
+          </div>
+        )}
         {this.props.slug && (
           <div className="header">
             <Link to={`/topics/${this.props.slug}/articles/postarticle`}>
@@ -20,7 +27,7 @@ class Articles extends Component {
           </div>
         )}
         <div className="main">
-          <ArticleCard articles={articles} />
+          <ArticleCard articles={articles} removeArticle={this.removeArticle} />
         </div>
       </>
     );
@@ -41,6 +48,22 @@ class Articles extends Component {
         this.setState({ articles });
       })
       .catch(console.log);
+  };
+  removeArticle = article_id => {
+    api.getArticle(article_id).then(article => {
+      if (article.author === this.props.user.username) {
+        api
+          .deleteArticle(article_id)
+          .then(() => {
+            this.fetchArticles();
+          })
+          .catch(console.log);
+      } else {
+        this.setState({
+          failDelete: "You cannot delete another users article, that's mean! :("
+        });
+      }
+    });
   };
 }
 

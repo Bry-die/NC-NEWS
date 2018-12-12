@@ -12,7 +12,7 @@ const Routes = ({ topics, user }) => {
     <Router>
       <Articles path="/" />
       <Articles path="/articles" />
-      <Articles path="/topics/:slug/articles" />
+      <Articles path="/topics/:slug/articles" user={user} />
       <PostArticle path="/topics/:slug/articles/postarticle" user={user} />
       <Topics path="/topics" topics={topics} />
       <PostTopic path="/topics/createtopic" />
