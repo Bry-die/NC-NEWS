@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import * as api from "../api";
+import { Link } from "@reach/router";
 
-class PostTopic extends Component {
+class PostArticle extends Component {
   state = {
-    newSubmission: { slug: "", description: "" },
+    newSubmission: { title: "", body: "", user_id: null },
     acceptedResponse: false,
     response: {}
   };
@@ -12,22 +13,22 @@ class PostTopic extends Component {
     return (
       <div className="main">
         <form type="input" onSubmit={e => this.handleSubmit(e)}>
-          <div className="inputSlug">
-            <label htmlFor="slug">Name of Topic:</label>
+          <div className="inputTitle">
+            <label htmlFor="title">Article title:</label>
             <input
               type="text"
-              id="slug"
-              value={newSubmission.slug}
+              id="title"
+              value={newSubmission.title}
               onChange={e => this.handleChange(e)}
               required
             />
           </div>
-          <div className="inputDesc">
-            <label htmlFor="description">Description:</label>
+          <div className="inputBody">
+            <label htmlFor="body">Article:</label>
             <input
               type="text"
-              id="description"
-              value={newSubmission.description}
+              id="body"
+              value={newSubmission.body}
               onChange={e => this.handleChange(e)}
               required
             />
@@ -37,8 +38,7 @@ class PostTopic extends Component {
         {acceptedResponse && (
           <ul>
             <li>SUCCESS!</li>
-            <li>Topic: {response.slug}</li>
-            <li>Description: {response.description}</li>
+            <Link to={`/articles`}>View your article!</Link>
           </ul>
         )}
       </div>
@@ -57,20 +57,24 @@ class PostTopic extends Component {
   };
   handleSubmit = event => {
     event.preventDefault();
-    api.postTopic(this.state.newSubmission).then(topic => {
-      console.log(topic);
+    const { newSubmission } = this.state;
+    newSubmission.user_id = this.props.user_id;
+    api.postArticle(newSubmission).then(article => {
+      console.log(article);
       this.setState(
         prevState => ({
           ...prevState,
-          response: topic,
+          response: article,
           acceptedResponse: true
         }),
         () => {
-          this.setState({ newSubmission: { slug: "", description: "" } });
+          this.setState({
+            newSubmission: { title: "", body: "", user_id: null }
+          });
         }
       );
     });
   };
 }
 
-export default PostTopic;
+export default PostArticle;

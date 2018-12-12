@@ -1,18 +1,28 @@
 import React, { Component } from "react";
 import * as api from "../api";
 import ArticleCard from "./ArticleCard";
+import { Link } from "@reach/router";
 
 class Articles extends Component {
   state = {
-    articles: []
+    articles: [],
+    p: 1
   };
   render() {
     const { articles } = this.state;
-    console.log(articles);
     return (
-      <div className="main">
-        <ArticleCard articles={articles} />
-      </div>
+      <>
+        {this.props.slug && (
+          <div className="header">
+            <Link to={`/topics/${this.props.slug}/articles/postarticle`}>
+              create a new article for this topic!
+            </Link>
+          </div>
+        )}
+        <div className="main">
+          <ArticleCard articles={articles} />
+        </div>
+      </>
     );
   }
   componentDidMount() {

@@ -8,9 +8,9 @@ const Nav = ({ topics }) => {
         Articles
       </Link>
       {topics.map(({ slug }) => {
-        slug = slug.split("");
-        slug[0] = slug[0].toUpperCase();
-        slug = slug.join("");
+        let topicsLink = slug.split("");
+        topicsLink[0] = topicsLink[0].toUpperCase();
+        topicsLink = topicsLink.join("");
         return (
           <Link key={slug} to={`/topics/${slug}/articles`} className="Link">
             {slug}

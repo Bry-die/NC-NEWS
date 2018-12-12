@@ -21,7 +21,7 @@ class App extends Component {
         <Auth user={user} login={this.login}>
           <Header user={user} />
           <nav className="nav">
-            <Nav topics={topics} />
+            <Nav topics={topics} user={user} />
           </nav>
           <Sidebar />
           <Footer />
