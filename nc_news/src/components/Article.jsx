@@ -44,6 +44,13 @@ class Article extends Component {
     this.fetchArticle();
     this.fetchComments();
   }
+  componentDidUpdate(prevProps, prevState) {
+    console.log(prevProps, prevState);
+    if (prevState.comments.length !== this.state.comments.length) {
+      this.fetchComments();
+      this.fetchArticle();
+    }
+  }
   fetchComments = () => {
     const { article_id } = this.props;
     api
