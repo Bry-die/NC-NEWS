@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import * as api from "./api";
 import Routes from "./components/Routes";
 import Auth from "./components/Auth";
+import { errorHandling } from "./errorHandling";
 
 class App extends Component {
   state = {
@@ -37,7 +38,7 @@ class App extends Component {
       .then(topics => {
         this.setState({ topics });
       })
-      .catch(console.log);
+      .catch(errorHandling);
   };
   login = user => {
     this.setState({ user });

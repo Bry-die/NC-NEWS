@@ -5,6 +5,7 @@ import Topics from "./Topics";
 import PostTopic from "./PostTopic";
 import Article from "./Article";
 import PostArticle from "./PostArticle";
+import Error from "./Error";
 
 const Routes = ({ topics, user }) => {
   return (
@@ -16,6 +17,7 @@ const Routes = ({ topics, user }) => {
       <Topics path="/topics" topics={topics} />
       <PostTopic path="/topics/createtopic" />
       <Article path="/articles/:article_id" user={user} />
+      <Error path="/error" />
     </Router>
   );
 };

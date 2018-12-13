@@ -4,6 +4,7 @@ import ArticleCard from "./ArticleCard";
 import { Link } from "@reach/router";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
+import { errorHandling } from "../errorHandling";
 
 class Articles extends Component {
   state = {
@@ -61,7 +62,7 @@ class Articles extends Component {
       .then(articles => {
         this.setState({ articles, currentQuery: sort_by });
       })
-      .catch(console.log);
+      .catch(errorHandling);
   };
   removeArticle = article_id => {
     api.getArticle(article_id).then(article => {
@@ -71,7 +72,7 @@ class Articles extends Component {
           .then(() => {
             this.fetchArticles();
           })
-          .catch(console.log);
+          .catch(errorHandling);
       }
     });
   };

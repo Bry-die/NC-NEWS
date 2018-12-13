@@ -3,6 +3,7 @@ import * as api from "../api";
 import { Link } from "@reach/router";
 import Comments from "./Comments";
 import PostComment from "./PostComment";
+import { errorHandling } from "../errorHandling";
 
 class Article extends Component {
   state = {
@@ -69,7 +70,7 @@ class Article extends Component {
       .then(comments => {
         this.setState({ comments, currentQuery: sort_by });
       })
-      .catch(console.log);
+      .catch(errorHandling);
   };
   fetchArticle = () => {
     const { article_id } = this.props;
@@ -78,7 +79,7 @@ class Article extends Component {
       .then(article => {
         this.setState({ article });
       })
-      .catch(console.log);
+      .catch(errorHandling);
   };
   removeComment = (author, comment_id) => {
     if (author === this.props.user.username) {
@@ -87,7 +88,7 @@ class Article extends Component {
         .then(() => {
           this.fetchComments();
         })
-        .catch(console.log);
+        .catch(errorHandling);
     }
   };
 }
