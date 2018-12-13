@@ -8,7 +8,7 @@ class PostComment extends Component {
     response: {}
   };
   render() {
-    const { newSubmission, response } = this.state;
+    const { newSubmission } = this.state;
     return (
       <div className="main">
         <form type="input" onSubmit={e => this.handleSubmit(e)}>

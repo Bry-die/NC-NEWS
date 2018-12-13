@@ -9,7 +9,7 @@ import PostArticle from "./PostArticle";
 const Routes = ({ topics, user }) => {
   return (
     <Router>
-      <Articles path="/" />
+      <Articles path="/" user={user} />
       <Articles path="/articles" user={user} />
       <Articles path="/topics/:slug/articles" user={user} />
       <PostArticle path="/topics/:slug/articles/postarticle" user={user} />

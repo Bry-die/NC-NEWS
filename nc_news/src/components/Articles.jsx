@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import * as api from "../api";
 import ArticleCard from "./ArticleCard";
 import { Link } from "@reach/router";
+import Dropdown from "react-dropdown";
+import "react-dropdown/style.css";
 
 class Articles extends Component {
   state = {
@@ -10,6 +12,7 @@ class Articles extends Component {
   };
   render() {
     const { articles, failDelete } = this.state;
+    console.log(this.props);
     return (
       <>
         {failDelete && (
@@ -25,7 +28,15 @@ class Articles extends Component {
           </div>
         )}
         <div className="main">
-          <ArticleCard articles={articles} removeArticle={this.removeArticle} />
+          <Dropdown
+            options={["Newest", "Hottest", "Controversial"]}
+            value="Newest"
+          />
+          <ArticleCard
+            articles={articles}
+            removeArticle={this.removeArticle}
+            user={this.props.user}
+          />
         </div>
       </>
     );

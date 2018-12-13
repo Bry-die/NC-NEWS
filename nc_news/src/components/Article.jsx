@@ -34,7 +34,11 @@ class Article extends Component {
             fetchComments={this.fetchComments}
           />
           <div>
-            <Comments comments={comments} removeComment={this.removeComment} />
+            <Comments
+              comments={comments}
+              removeComment={this.removeComment}
+              user={this.props.user}
+            />
           </div>
         </div>
       </div>
@@ -45,7 +49,6 @@ class Article extends Component {
     this.fetchComments();
   }
   componentDidUpdate(prevProps, prevState) {
-    console.log(prevProps, prevState);
     if (prevState.comments.length !== this.state.comments.length) {
       this.fetchComments();
       this.fetchArticle();

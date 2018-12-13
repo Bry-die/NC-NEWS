@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "@reach/router";
 import DeleteArticle from "./DeleteArticle";
 
-const ArticleCard = ({ articles, removeArticle }) => {
+const ArticleCard = ({ articles, removeArticle, user }) => {
   return (
     <div className="main">
       {articles.map(({ article_id, title, author, votes, created_at }) => {
@@ -25,6 +25,8 @@ const ArticleCard = ({ articles, removeArticle }) => {
             <DeleteArticle
               article_id={article_id}
               removeArticle={removeArticle}
+              user={user}
+              author={author}
             />
           </div>
         );

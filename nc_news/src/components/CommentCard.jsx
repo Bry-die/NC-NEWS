@@ -1,7 +1,7 @@
 import React from "react";
 import DeleteComment from "./DeleteComment";
 
-const CommentCard = ({ comments, removeComment }) => {
+const CommentCard = ({ comments, removeComment, user }) => {
   return (
     <div className="main">
       {comments.map(({ author, votes, created_at, body, comment_id }) => {
@@ -19,6 +19,7 @@ const CommentCard = ({ comments, removeComment }) => {
               removeComment={removeComment}
               author={author}
               comment_id={comment_id}
+              user={user}
             />
           </div>
         );
