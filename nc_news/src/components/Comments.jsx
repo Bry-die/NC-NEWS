@@ -14,8 +14,7 @@ const Comments = ({
       <Dropdown
         options={[
           { value: "created_at", label: "Newest" },
-          { value: "votes", label: "Hottest" },
-          { value: "comment_count", label: "Most talked about" }
+          { value: "votes", label: "Hottest" }
         ]}
         onChange={fetchComments}
         value={currentQuery}

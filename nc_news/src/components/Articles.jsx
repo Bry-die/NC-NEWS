@@ -11,14 +11,9 @@ class Articles extends Component {
     currentQuery: ""
   };
   render() {
-    const { articles, failDelete } = this.state;
+    const { articles } = this.state;
     return (
       <>
-        {failDelete && (
-          <div className="header">
-            <p>{failDelete}</p>
-          </div>
-        )}
         {this.props.slug && (
           <div className="header">
             <Link to={`/topics/${this.props.slug}/articles/postarticle`}>
