@@ -8,10 +8,10 @@ class Article extends Component {
   state = {
     article: {},
     comments: [],
-    failDelete: ""
+    currentQuery: ""
   };
   render() {
-    const { article, comments } = this.state;
+    const { article, comments, currentQuery } = this.state;
     return (
       <div className="main">
         <h3>{article.title}</h3>
@@ -35,6 +35,8 @@ class Article extends Component {
           />
           <div>
             <Comments
+              fetchComments={this.fetchComments}
+              currentQuery={currentQuery}
               comments={comments}
               removeComment={this.removeComment}
               user={this.props.user}
@@ -54,12 +56,18 @@ class Article extends Component {
       this.fetchArticle();
     }
   }
-  fetchComments = () => {
+  fetchComments = e => {
     const { article_id } = this.props;
+    let sort_by;
+    if (e) {
+      sort_by = e.value;
+    } else {
+      sort_by = "created_at";
+    }
     api
-      .getComments(article_id)
+      .getComments(article_id, sort_by)
       .then(comments => {
-        this.setState({ comments });
+        this.setState({ comments, currentQuery: sort_by });
       })
       .catch(console.log);
   };

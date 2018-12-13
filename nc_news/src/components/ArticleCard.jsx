@@ -20,7 +20,17 @@ const ArticleCard = ({ articles, removeArticle, user }) => {
               <h5>{created_at.slice(0, 10)}</h5>
             </div>
             <div className="votes">
+              {/* <img
+                id="upVote"
+                src="http://www.newdesignfile.com/postpic/2014/06/right-arrow-vector_236575.png"
+                alt="upVote"
+              />
               <h6>{votes}</h6>
+              <img
+                id="downVote  "
+                scr="http://www.newdesignfile.com/postpic/2014/06/right-arrow-vector_236575.png"
+                alt="downVote"
+              /> */}
             </div>
             <DeleteArticle
               article_id={article_id}
