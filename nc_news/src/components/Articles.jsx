@@ -10,8 +10,6 @@ class Articles extends Component {
   };
   render() {
     const { articles, failDelete } = this.state;
-    console.log(failDelete);
-    console.log(this.props);
     return (
       <>
         {failDelete && (

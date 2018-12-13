@@ -1,9 +1,10 @@
 import React from "react";
+import DeleteComment from "./DeleteComment";
 
-const CommentCard = ({ comments }) => {
+const CommentCard = ({ comments, removeComment }) => {
   return (
     <div className="main">
-      {comments.map(({ author, votes, created_at, body }) => {
+      {comments.map(({ author, votes, created_at, body, comment_id }) => {
         return (
           <div className="articleCard">
             <div className="articleTitle">
@@ -14,26 +15,16 @@ const CommentCard = ({ comments }) => {
             <div className="votes">
               <h6>{votes}</h6>
             </div>
+            <DeleteComment
+              removeComment={removeComment}
+              author={author}
+              comment_id={comment_id}
+            />
           </div>
         );
       })}
     </div>
   );
 };
-
-{
-  /* <>
-  {comments.map(({ votes, created_at, author, body, comment_id }) => {
-    return (
-      <>
-        <h5>{author}</h5>
-        <h6>{created_at}</h6>
-        <p>{body}</p>
-        <h6>{votes}</h6>
-      </>
-    );
-  })}
-</>; */
-}
 
 export default CommentCard;

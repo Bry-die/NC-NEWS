@@ -7,7 +7,8 @@ import PostComment from "./PostComment";
 class Article extends Component {
   state = {
     article: {},
-    comments: []
+    comments: [],
+    failDelete: ""
   };
   render() {
     const { article, comments } = this.state;
@@ -32,7 +33,9 @@ class Article extends Component {
             fetchArticle={this.fetchArticle}
             fetchComments={this.fetchComments}
           />
-          <Comments comments={comments} />
+          <div>
+            <Comments comments={comments} removeComment={this.removeComment} />
+          </div>
         </div>
       </div>
     );
@@ -58,6 +61,20 @@ class Article extends Component {
         this.setState({ article });
       })
       .catch(console.log);
+  };
+  removeComment = (author, comment_id) => {
+    if (author === this.props.user.username) {
+      api
+        .deleteComment(comment_id)
+        .then(() => {
+          this.fetchComments();
+        })
+        .catch(console.log);
+    } else {
+      this.setState({
+        failDelete: "You cannot delete another users comment, that's mean! :("
+      });
+    }
   };
 }
 

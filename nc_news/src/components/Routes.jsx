@@ -4,14 +4,13 @@ import Articles from "./Articles";
 import Topics from "./Topics";
 import PostTopic from "./PostTopic";
 import Article from "./Article";
-import Comments from "./Comments";
 import PostArticle from "./PostArticle";
 
 const Routes = ({ topics, user }) => {
   return (
     <Router>
       <Articles path="/" />
-      <Articles path="/articles" />
+      <Articles path="/articles" user={user} />
       <Articles path="/topics/:slug/articles" user={user} />
       <PostArticle path="/topics/:slug/articles/postarticle" user={user} />
       <Topics path="/topics" topics={topics} />
