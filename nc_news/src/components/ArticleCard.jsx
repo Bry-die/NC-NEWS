@@ -7,7 +7,7 @@ const ArticleCard = ({ articles, removeArticle, user }) => {
     <div className="main">
       {articles.map(({ article_id, title, author, votes, created_at }) => {
         return (
-          <div className="articleCard">
+          <div className="articleCard" key={article_id}>
             <div className="articleTitle">
               <h5 id="author">{author}</h5>
               <Link

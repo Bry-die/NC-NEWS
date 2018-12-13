@@ -6,7 +6,7 @@ const CommentCard = ({ comments, removeComment, user }) => {
     <div className="main">
       {comments.map(({ author, votes, created_at, body, comment_id }) => {
         return (
-          <div className="articleCard">
+          <div className="articleCard" key={comment_id}>
             <div className="articleTitle">
               <h5 id="author">{author}</h5>
               <p>{body}</p>

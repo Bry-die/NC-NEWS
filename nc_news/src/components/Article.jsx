@@ -80,10 +80,6 @@ class Article extends Component {
           this.fetchComments();
         })
         .catch(console.log);
-    } else {
-      this.setState({
-        failDelete: "You cannot delete another users comment, that's mean! :("
-      });
     }
   };
 }

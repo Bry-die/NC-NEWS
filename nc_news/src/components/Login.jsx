@@ -8,7 +8,6 @@ class Login extends Component {
   };
   render() {
     const { input, error } = this.state;
-    console.log(input);
     return (
       <form onSubmit={e => this.handleSubmit(e)}>
         <label htmlFor="username">USERNAME:</label>

@@ -9,7 +9,7 @@ class PostArticle extends Component {
     response: {}
   };
   render() {
-    const { newSubmission, acceptedResponse, response } = this.state;
+    const { newSubmission, acceptedResponse } = this.state;
     return (
       <div className="main">
         <form type="input" onSubmit={e => this.handleSubmit(e)}>

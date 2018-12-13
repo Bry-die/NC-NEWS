@@ -8,11 +8,10 @@ import "react-dropdown/style.css";
 class Articles extends Component {
   state = {
     articles: [],
-    failDelete: ""
+    currentQuery: ""
   };
   render() {
     const { articles, failDelete } = this.state;
-    console.log(this.props);
     return (
       <>
         {failDelete && (
@@ -29,8 +28,13 @@ class Articles extends Component {
         )}
         <div className="main">
           <Dropdown
-            options={["Newest", "Hottest", "Controversial"]}
-            value="Newest"
+            options={[
+              { value: "created_at", label: "Newest" },
+              { value: "votes", label: "Hottest" },
+              { value: "comment_count", label: "Most talked about" }
+            ]}
+            onChange={this.fetchArticles}
+            value={this.state.currentQuery}
           />
           <ArticleCard
             articles={articles}
@@ -49,12 +53,18 @@ class Articles extends Component {
       this.fetchArticles();
     }
   }
-  fetchArticles = () => {
+  fetchArticles = e => {
     const { slug } = this.props;
+    let sort_by;
+    if (e) {
+      sort_by = e.value;
+    } else {
+      sort_by = "created_at";
+    }
     api
-      .getArticles(slug)
+      .getArticles(slug, sort_by)
       .then(articles => {
-        this.setState({ articles });
+        this.setState({ articles, currentQuery: sort_by });
       })
       .catch(console.log);
   };
@@ -67,10 +77,6 @@ class Articles extends Component {
             this.fetchArticles();
           })
           .catch(console.log);
-      } else {
-        this.setState({
-          failDelete: "You cannot delete another users article, that's mean! :("
-        });
       }
     });
   };
