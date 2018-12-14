@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "@reach/router";
 import DeleteArticle from "./DeleteArticle";
-import Votes from "./Votes";
 
 const ArticleCard = ({ articles, removeArticle, user, vote }) => {
   return (

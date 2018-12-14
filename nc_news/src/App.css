@@ -81,6 +81,7 @@ ul {
   flex: 1;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .articleTitle {
@@ -117,16 +118,4 @@ p {
   margin: 1%;
   margin-left: 0%;
   font-size: 70%;
-}
-
-#upVote {
-  width: 10%;
-  height: 10%;
-  transform: rotate(270deg);
-}
-
-#downVote {
-  width: 10%;
-  height: 10%;
-  transform: rotate(90deg);
 }

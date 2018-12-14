@@ -10,7 +10,8 @@ class Article extends Component {
   state = {
     article: {},
     comments: [],
-    currentQuery: ""
+    currentQuery: "",
+    p: 1
   };
   render() {
     const { article, comments, currentQuery } = this.state;
@@ -25,11 +26,13 @@ class Article extends Component {
         <Link to={`/topics/${article.topic}/articles`}>{`Topic: ${
           article.topic
         }`}</Link>
+
         <Votes
           article_id={this.props.article_id}
           vote={this.vote}
           votes={article.votes}
         />
+
         <h5>{`Comment count: ${article.comment_count}`}</h5>
         <div className="comments">
           <PostComment
@@ -98,9 +101,12 @@ class Article extends Component {
     }
   };
   vote = (num, article_id) => {
-    api.patchVotes(num, article_id).then(article => {
-      this.setState({ article });
-    });
+    api
+      .patchVotes(num, article_id)
+      .then(article => {
+        this.setState({ article });
+      })
+      .catch(errorHandling);
   };
 }
 
