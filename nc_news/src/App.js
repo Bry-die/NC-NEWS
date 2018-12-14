@@ -32,6 +32,11 @@ class App extends Component {
   componentDidMount() {
     this.fetchTopics();
   }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.topics !== this.state.topics) {
+      this.fetchTopics();
+    }
+  }
   fetchTopics = () => {
     api
       .getTopics()

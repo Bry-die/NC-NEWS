@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import * as api from "../api";
-import { navigate } from "@reach/router/lib/history";
 
 class PostTopic extends Component {
   state = {
@@ -59,7 +58,6 @@ class PostTopic extends Component {
   handleSubmit = event => {
     event.preventDefault();
     api.postTopic(this.state.newSubmission).then(topic => {
-      console.log(topic);
       this.setState(
         prevState => ({
           ...prevState,
@@ -67,9 +65,6 @@ class PostTopic extends Component {
           acceptedResponse: true
         }),
         () => {
-          const { response } = this.state;
-          const { slug } = response;
-          navigate(`topics/${slug}/createarticle`);
           this.setState({ newSubmission: { slug: "", description: "" } });
         }
       );
