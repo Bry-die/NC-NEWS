@@ -18,6 +18,7 @@ const ArticleCard = ({ articles, removeArticle, user, vote }) => {
                 {title}
               </Link>
               <h5>{created_at.slice(0, 10)}</h5>
+              <h6>Votes: {votes}</h6>
             </div>
             <DeleteArticle
               article_id={article_id}

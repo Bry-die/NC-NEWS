@@ -65,6 +65,9 @@ class Article extends Component {
       this.fetchComments();
       this.fetchArticle();
     }
+    if (prevState.article.votes !== this.state.article.votes) {
+      this.fetchArticle();
+    }
   }
   fetchComments = e => {
     const { article_id } = this.props;
@@ -79,7 +82,11 @@ class Article extends Component {
       .then(comments => {
         this.setState({ comments, currentQuery: sort_by });
       })
-      .catch(errorHandling);
+      .catch(err => {
+        if (this.state.comments.length !== 0) {
+          errorHandling(err);
+        }
+      });
   };
   fetchArticle = () => {
     const { article_id } = this.props;
@@ -104,7 +111,12 @@ class Article extends Component {
     api
       .patchVotes(num, article_id)
       .then(article => {
-        this.setState({ article });
+        this.setState(({ article }) => ({
+          article: {
+            ...article,
+            votes: article.votes + num
+          }
+        }));
       })
       .catch(errorHandling);
   };
