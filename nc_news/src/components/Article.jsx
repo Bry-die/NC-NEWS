@@ -4,6 +4,7 @@ import { Link } from "@reach/router";
 import Comments from "./Comments";
 import PostComment from "./PostComment";
 import { errorHandling } from "../errorHandling";
+import Votes from "./Votes";
 
 class Article extends Component {
   state = {
@@ -24,6 +25,11 @@ class Article extends Component {
         <Link to={`/topics/${article.topic}/articles`}>{`Topic: ${
           article.topic
         }`}</Link>
+        <Votes
+          article_id={this.props.article_id}
+          vote={this.vote}
+          votes={article.votes}
+        />
         <h5>{`Comment count: ${article.comment_count}`}</h5>
         <div className="comments">
           <PostComment
@@ -90,6 +96,11 @@ class Article extends Component {
         })
         .catch(errorHandling);
     }
+  };
+  vote = (num, article_id) => {
+    api.patchVotes(num, article_id).then(article => {
+      this.setState({ article });
+    });
   };
 }
 

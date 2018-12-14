@@ -36,6 +36,7 @@ class Articles extends Component {
             articles={articles}
             removeArticle={this.removeArticle}
             user={this.props.user}
+            vote={this.vote}
           />
         </div>
       </>

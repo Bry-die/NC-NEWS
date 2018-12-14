@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import * as api from "../api";
+import { navigate } from "@reach/router/lib/history";
 
 class PostTopic extends Component {
   state = {
@@ -66,6 +67,9 @@ class PostTopic extends Component {
           acceptedResponse: true
         }),
         () => {
+          const { response } = this.state;
+          const { slug } = response;
+          navigate(`topics/${slug}/createarticle`);
           this.setState({ newSubmission: { slug: "", description: "" } });
         }
       );
