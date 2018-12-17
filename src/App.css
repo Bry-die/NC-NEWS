@@ -3,12 +3,11 @@
   height: 100vh;
   text-align: center;
   display: grid;
-  grid-template: 2fr 1fr 6fr 2fr / 1fr;
+  grid-template: 17% 4% 79% / 100%;
   grid-template-areas:
     "header"
     "nav"
-    "main"
-    "footer";
+    "main";
   text-decoration: none;
 }
 
@@ -20,8 +19,6 @@ body {
   margin: 0%;
   padding: 1%;
   grid-area: header;
-  border: 1px solid red;
-  background-color: rgba(255, 0, 0, 0.1);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -31,26 +28,18 @@ body {
 .nav {
   margin: 0%;
   grid-area: nav;
-  border: 1px solid green;
-  background-color: rgba(0, 255, 0, 0.1);
   display: flex;
+  padding: 2px;
   flex-direction: row;
   justify-content: space-around;
+  border: 0.75px solid grey;
 }
 
 .main {
   margin: 0%;
   grid-area: main;
-  border: 1px solid yellow;
-  background-color: rgba(255, 217, 0, 0.1);
+  background-color: LIGHTGREY;
   text-align: left;
-}
-
-.footer {
-  margin: 0%;
-  grid-area: footer;
-  border: 1px solid purple;
-  background-color: rgba(174, 0, 255, 0.1);
 }
 
 ul {
@@ -60,12 +49,13 @@ ul {
 }
 
 .articleCard {
-  border: 1px solid green;
+  margin: 10px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   padding: 2px;
-  margin: 0px;
+  background-color: WHITE;
+  border: 0.75px solid grey;
 }
 
 .Link {
@@ -78,10 +68,9 @@ ul {
 
 .votes {
   display: flex;
-  flex: 1;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin: 5px;
 }
 
 .articleTitle {
@@ -118,4 +107,25 @@ p {
   margin: 1%;
   margin-left: 0%;
   font-size: 70%;
+}
+
+.articleVotes {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding: 5px;
+}
+
+#deleteArticleButton {
+  margin: 5px;
+  background-color: white;
+  padding: 2px;
+  border: none;
+}
+
+#deleteCommentButton {
+  margin: 10px;
+  background-color: white;
+  padding: 2px;
+  border: none;
 }

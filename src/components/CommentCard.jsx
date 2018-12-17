@@ -13,14 +13,14 @@ const CommentCard = ({ comments, removeComment, user }) => {
               <h5>{created_at.slice(0, 10)}</h5>
             </div>
             <div className="votes">
+              <DeleteComment
+                removeComment={removeComment}
+                author={author}
+                comment_id={comment_id}
+                user={user}
+              />
               <h6>{votes}</h6>
             </div>
-            <DeleteComment
-              removeComment={removeComment}
-              author={author}
-              comment_id={comment_id}
-              user={user}
-            />
           </div>
         );
       })}

@@ -2,7 +2,14 @@ import React from "react";
 
 const DeleteArticle = ({ article_id, removeArticle, user, author }) => {
   if (user.username === author) {
-    return <button onClick={() => removeArticle(article_id)}>X</button>;
+    return (
+      <button
+        id="deleteArticleButton"
+        onClick={() => removeArticle(article_id)}
+      >
+        X
+      </button>
+    );
   } else {
     return null;
   }

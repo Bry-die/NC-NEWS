@@ -41,22 +41,21 @@ class Articles extends Component {
             user={this.props.user}
             vote={this.vote}
           />
+          <button onClick={this.loadMore}>Load more...</button>
         </div>
-        <button onClick={this.loadMore}>Load more...</button>
       </>
     );
   }
   componentDidMount() {
     this.fetchArticles();
   }
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.slug !== this.props.slug) {
-      this.fetchArticles();
-    }
-  }
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (prevState.articles !== this.state.articles) {
+  //     this.fetchArticles();
+  //   }
+  // }
   fetchArticles = e => {
     const { per, page, articles } = this.state;
-    console.log(page);
     const { slug } = this.props;
     let sort_by;
     if (e) {
@@ -67,7 +66,6 @@ class Articles extends Component {
     api
       .getArticles(slug, sort_by, per, page)
       .then(newArticles => {
-        console.log(newArticles);
         this.setState({
           articles: [...articles, ...newArticles],
           currentQuery: sort_by
