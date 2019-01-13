@@ -18,6 +18,7 @@ const Comments = ({
         ]}
         onChange={fetchComments}
         value={currentQuery}
+        className="dropdown"
       />
       <CommentCard
         comments={comments}

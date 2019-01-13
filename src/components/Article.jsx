@@ -21,12 +21,13 @@ class Article extends Component {
           <h3>{article.title}</h3>
           <div className="titleDate">
             <h4 className="articleAuthor">{`By ${article.author}`}</h4>
-            <h5>{article.created_at}</h5>
+            <h5 className="articleDate">{article.created_at}</h5>
           </div>
-          <p>{article.body} </p>
-          <Link to={`/topics/${article.topic}/articles`}>{`Topic: ${
-            article.topic
-          }`}</Link>
+          <p className="articleBody">{article.body} </p>
+          <Link
+            className="topicLinks"
+            to={`/topics/${article.topic}/articles`}
+          >{`Topic: ${article.topic}`}</Link>
 
           <Votes
             article_id={this.props.article_id}
@@ -34,7 +35,9 @@ class Article extends Component {
             votes={article.votes}
           />
 
-          <h5>{`Comment count: ${article.comment_count}`}</h5>
+          <h5 className="commentCount">{`Comment count: ${
+            article.comment_count
+          }`}</h5>
           <div className="comments">
             <PostComment
               article={article}
@@ -44,7 +47,7 @@ class Article extends Component {
               fetchArticle={this.fetchArticle}
               fetchComments={this.fetchComments}
             />
-            <div>
+            <div className="comments">
               <Comments
                 fetchComments={this.fetchComments}
                 currentQuery={currentQuery}

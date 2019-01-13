@@ -12,6 +12,10 @@
   background-color: lightgrey;
 }
 
+html {
+  background-color: lightgrey;
+}
+
 body {
   margin: 0%;
 }
@@ -71,11 +75,12 @@ ul {
 .votes {
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: center;
   margin: 5px;
 }
 
 .articleTitle {
+  margin-top: 0;
   margin-left: 1%;
   display: flex;
   flex-direction: column;
@@ -91,7 +96,8 @@ h5 {
 
 #author {
   margin-bottom: 1%;
-  margin-top: 0%;
+  margin-top: 0.25%;
+  margin-left: 0%;
 }
 
 p {
@@ -102,8 +108,16 @@ p {
 .articleAuthor,
 .titleDate {
   margin: 1%;
-  margin-left: 0%;
-  font-size: 70%;
+  margin-left: 0.3%;
+  font-size: 90%;
+}
+
+.articleDate {
+  margin-left: 0.3%;
+}
+
+.articleBody {
+  margin-left: 0.75%;
 }
 
 .articleVotes {
@@ -146,6 +160,14 @@ h3 {
   margin-right: 20px;
 }
 
+.commentForm {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  padding: 1%;
+  border: 1px solid grey;
+}
+
 .label {
   padding: 5px;
 }
@@ -162,4 +184,33 @@ h3 {
   background-color: white;
   border: 0.5px solid grey;
   margin: 5px;
+}
+
+.commentCount {
+  padding: 1%;
+}
+
+.votingButton {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  background-color: lightgrey;
+  border: 0.5px solid grey;
+  color: white;
+  padding: 0px;
+  margin-right: 0.75%;
+  margin-left: 0.75%;
+  height: 20px;
+  width: 80px;
+}
+
+.comments {
+  background-color: lightgrey;
+  margin: 0%;
+  padding: 0%;
+}
+
+.dropdown {
+  margin: 0%;
+  padding: 0%;
 }

@@ -11,7 +11,11 @@ class PostComment extends Component {
     const { newSubmission } = this.state;
     return (
       <div className="main">
-        <form type="input" onSubmit={e => this.handleSubmit(e)}>
+        <form
+          className="commentForm"
+          type="input"
+          onSubmit={e => this.handleSubmit(e)}
+        >
           <div className="inputBody">
             <label htmlFor="body">Comment:</label>
             <input
@@ -21,8 +25,8 @@ class PostComment extends Component {
               onChange={e => this.handleChange(e)}
               required
             />
+            <button type="submit">Comment!</button>
           </div>
-          <button type="submit">Comment!</button>
         </form>
       </div>
     );

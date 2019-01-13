@@ -26,7 +26,7 @@ const ArticleCard = ({ articles, removeArticle, user, vote }) => {
                 user={user}
                 author={author}
               />
-              <h6>Votes: {votes}</h6>
+              <h6 className="voteNumber">Votes: {votes}</h6>
             </div>
           </div>
         );
