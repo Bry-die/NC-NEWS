@@ -12,29 +12,41 @@ class PostArticle extends Component {
     const { newSubmission, acceptedResponse } = this.state;
     return (
       <div className="main">
-        <form type="input" onSubmit={e => this.handleSubmit(e)}>
-          <div className="inputTitle">
-            <label htmlFor="title">Article title:</label>
-            <input
-              type="text"
-              id="title"
-              value={newSubmission.title}
-              onChange={e => this.handleChange(e)}
-              required
-            />
-          </div>
-          <div className="inputBody">
-            <label htmlFor="body">Article:</label>
-            <input
-              type="text"
-              id="body"
-              value={newSubmission.body}
-              onChange={e => this.handleChange(e)}
-              required
-            />
-          </div>
-          <button type="submit">Submit</button>
-        </form>
+        <div className="createArticle">
+          <form
+            type="input"
+            onSubmit={e => this.handleSubmit(e)}
+            className="articleForm"
+          >
+            <div className="inputTitle">
+              <label htmlFor="title" className="titleLabel">
+                Article title:
+              </label>
+              <input
+                type="text"
+                id="title"
+                value={newSubmission.title}
+                onChange={e => this.handleChange(e)}
+                required
+              />
+            </div>
+            <div className="inputBody">
+              <label htmlFor="body" className="bodyLabel">
+                Article:
+              </label>
+              <input
+                type="text"
+                id="body"
+                value={newSubmission.body}
+                onChange={e => this.handleChange(e)}
+                required
+              />
+            </div>
+            <button type="submit" className="submitArticle">
+              Submit
+            </button>
+          </form>
+        </div>
         {acceptedResponse && (
           <ul>
             <li>SUCCESS!</li>

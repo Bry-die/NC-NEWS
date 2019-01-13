@@ -12,8 +12,12 @@ class PostTopic extends Component {
     const { newSubmission, acceptedResponse, response } = this.state;
     return (
       <div className="main">
-        <form type="input" onSubmit={e => this.handleSubmit(e)}>
-          <div className="inputSlug">
+        <form
+          type="input"
+          onSubmit={e => this.handleSubmit(e)}
+          className="articleForm"
+        >
+          <div className="inputTitle">
             <label htmlFor="slug">Name of Topic:</label>
             <input
               type="text"
@@ -23,7 +27,7 @@ class PostTopic extends Component {
               required
             />
           </div>
-          <div className="inputDesc">
+          <div className="inputBody">
             <label htmlFor="description">Description:</label>
             <input
               type="text"
@@ -33,7 +37,9 @@ class PostTopic extends Component {
               required
             />
           </div>
-          <button type="submit">Submit</button>
+          <button type="submit" className="submitArticle">
+            Submit
+          </button>
         </form>
         {acceptedResponse && (
           <Redirect
