@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import * as api from "../api";
+import { Redirect } from "@reach/router";
 
 class PostTopic extends Component {
   state = {
@@ -35,11 +36,11 @@ class PostTopic extends Component {
           <button type="submit">Submit</button>
         </form>
         {acceptedResponse && (
-          <ul>
-            <li>SUCCESS!</li>
-            <li>Topic: {response.slug}</li>
-            <li>Description: {response.description}</li>
-          </ul>
+          <Redirect
+            from="/topics/createtopic"
+            to={`/topics/${response.slug}/articles/postarticle`}
+            noThrow
+          />
         )}
       </div>
     );
