@@ -10,7 +10,6 @@ class Articles extends Component {
   state = {
     articles: [],
     currentQuery: "",
-    per: 10,
     page: 1,
     totalPages: null
   };
@@ -41,7 +40,6 @@ class Articles extends Component {
             user={this.props.user}
             vote={this.vote}
           />
-          <button onClick={this.loadMore}>Load more...</button>
         </div>
       </>
     );
@@ -49,13 +47,13 @@ class Articles extends Component {
   componentDidMount() {
     this.fetchArticles();
   }
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (prevState.articles !== this.state.articles) {
-  //     this.fetchArticles();
-  //   }
-  // }
+  componentDidUpdate(prevProps) {
+    if (prevProps.slug !== this.props.slug) {
+      this.fetchArticles();
+    }
+  }
   fetchArticles = e => {
-    const { per, page, articles } = this.state;
+    const { page } = this.state;
     const { slug } = this.props;
     let sort_by;
     if (e) {
@@ -63,19 +61,12 @@ class Articles extends Component {
     } else {
       sort_by = "created_at";
     }
-    api
-      .getArticles(slug, sort_by, per, page)
-      .then(newArticles => {
-        this.setState({
-          articles: [...articles, ...newArticles],
-          currentQuery: sort_by
-        });
-      })
-      .then(() => {
-        let { totalPages } = this.state;
-        totalPages = this.state.articles.length / 10;
-        this.setState({ totalPages });
+    api.getArticles(sort_by, page, slug).then(articles => {
+      this.setState({
+        articles,
+        currentQuery: sort_by
       });
+    });
   };
   removeArticle = article_id => {
     api.getArticle(article_id).then(article => {
@@ -88,16 +79,6 @@ class Articles extends Component {
           .catch(errorHandling);
       }
     });
-  };
-  loadMore = () => {
-    this.setState(
-      prevState => ({
-        page: prevState.page + 1
-      }),
-      () => {
-        this.fetchArticles();
-      }
-    );
   };
 }
 

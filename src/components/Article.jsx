@@ -17,40 +17,42 @@ class Article extends Component {
     const { article, comments, currentQuery } = this.state;
     return (
       <div className="main">
-        <h3>{article.title}</h3>
-        <div className="titleDate">
-          <h4 className="articleAuthor">{`By ${article.author}`}</h4>
-          <h5>{article.created_at}</h5>
-        </div>
-        <p>{article.body} </p>
-        <Link to={`/topics/${article.topic}/articles`}>{`Topic: ${
-          article.topic
-        }`}</Link>
+        <div className="singleArticle">
+          <h3>{article.title}</h3>
+          <div className="titleDate">
+            <h4 className="articleAuthor">{`By ${article.author}`}</h4>
+            <h5>{article.created_at}</h5>
+          </div>
+          <p>{article.body} </p>
+          <Link to={`/topics/${article.topic}/articles`}>{`Topic: ${
+            article.topic
+          }`}</Link>
 
-        <Votes
-          article_id={this.props.article_id}
-          vote={this.vote}
-          votes={article.votes}
-        />
-
-        <h5>{`Comment count: ${article.comment_count}`}</h5>
-        <div className="comments">
-          <PostComment
-            article={article}
-            comments={comments}
+          <Votes
             article_id={this.props.article_id}
-            user={this.props.user}
-            fetchArticle={this.fetchArticle}
-            fetchComments={this.fetchComments}
+            vote={this.vote}
+            votes={article.votes}
           />
-          <div>
-            <Comments
-              fetchComments={this.fetchComments}
-              currentQuery={currentQuery}
+
+          <h5>{`Comment count: ${article.comment_count}`}</h5>
+          <div className="comments">
+            <PostComment
+              article={article}
               comments={comments}
-              removeComment={this.removeComment}
+              article_id={this.props.article_id}
               user={this.props.user}
+              fetchArticle={this.fetchArticle}
+              fetchComments={this.fetchComments}
             />
+            <div>
+              <Comments
+                fetchComments={this.fetchComments}
+                currentQuery={currentQuery}
+                comments={comments}
+                removeComment={this.removeComment}
+                user={this.props.user}
+              />
+            </div>
           </div>
         </div>
       </div>

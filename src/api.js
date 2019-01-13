@@ -7,10 +7,10 @@ export const getTopics = async () => {
   return data.topics;
 };
 
-export const getArticles = async (slug, sort_by, per, page) => {
+export const getArticles = async (sort_by, page, slug) => {
   const URL = slug
-    ? `${BASE_URL}/topics/${slug}/articles?sort_by=${sort_by}&p=${page}&limit=${per}`
-    : `${BASE_URL}/articles?sort_by=${sort_by}&p=${page}&limit=${per}`;
+    ? `${BASE_URL}/topics/${slug}/articles?sort_by=${sort_by}&p=${page}`
+    : `${BASE_URL}/articles?sort_by=${sort_by}&p=${page}`;
   const { data } = await axios.get(URL);
   return data.articles;
 };

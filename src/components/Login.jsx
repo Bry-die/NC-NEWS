@@ -3,7 +3,7 @@ import * as api from "../api";
 
 class Login extends Component {
   state = {
-    input: "",
+    input: "tickle122",
     error: ""
   };
   render() {

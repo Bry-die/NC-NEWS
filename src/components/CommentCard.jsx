@@ -19,7 +19,7 @@ const CommentCard = ({ comments, removeComment, user }) => {
                 comment_id={comment_id}
                 user={user}
               />
-              <h6>{votes}</h6>
+              <h6>Votes: {votes}</h6>
             </div>
           </div>
         );

@@ -92,11 +92,6 @@ h5 {
   margin-top: 0%;
 }
 
-.comments {
-  border: 1px solid orange;
-  background-color: rgb(255, 165, 0, 0.1);
-}
-
 p {
   margin: 0%;
   font-size: 70%;
@@ -128,4 +123,13 @@ p {
   background-color: white;
   padding: 2px;
   border: none;
+}
+
+.singleArticle {
+  background-color: white;
+}
+
+h3 {
+  margin-bottom: 0%;
+  margin-left: 5px;
 }
