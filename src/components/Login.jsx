@@ -9,17 +9,21 @@ class Login extends Component {
   render() {
     const { input, error } = this.state;
     return (
-      <form onSubmit={e => this.handleSubmit(e)}>
-        <label htmlFor="username">USERNAME:</label>
-        <input
-          type="text"
-          id="username"
-          value={this.state.input}
-          onChange={this.handleChange}
-        />
-        <button>Login</button>
-        {error && <p>{error}</p>}
-      </form>
+      <div className="main">
+        <form onSubmit={e => this.handleSubmit(e)} className="loginForm">
+          <label htmlFor="username" className="label">
+            Username:
+          </label>
+          <input
+            type="text"
+            id="username"
+            value={this.state.input}
+            onChange={this.handleChange}
+          />
+          <button>Login</button>
+          {error && <p>{error}</p>}
+        </form>
+      </div>
     );
   }
   handleChange = event => {
