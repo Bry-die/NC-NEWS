@@ -13,7 +13,7 @@ const Nav = ({ topics }) => {
         topicsLink = topicsLink.join("");
         return (
           <Link key={slug} to={`/topics/${slug}/articles`} className="Link">
-            {slug}
+            {topicsLink}
           </Link>
         );
       })}
