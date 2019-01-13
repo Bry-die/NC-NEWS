@@ -20,7 +20,7 @@ class Articles extends Component {
         {this.props.slug && (
           <div className="header">
             <Link to={`/topics/${this.props.slug}/articles/postarticle`}>
-              create a new article for this topic!
+              Create a new article for this topic!
             </Link>
           </div>
         )}
