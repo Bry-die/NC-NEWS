@@ -21,11 +21,17 @@ class Article extends Component {
           <h3>{article.title}</h3>
           <div className="titleDate">
             <h4 className="articleAuthor">{`By ${article.author}`}</h4>
-            <h5 className="articleDate">{article.created_at}</h5>
+            <h5 className="articleDate">
+              {article.created_at &&
+                article.created_at
+                  .split("")
+                  .slice(0, 10)
+                  .join("")}
+            </h5>
           </div>
           <p className="articleBody">{article.body} </p>
           <Link
-            className="topicLinks"
+            className="topicLink"
             to={`/topics/${article.topic}/articles`}
           >{`Topic: ${article.topic}`}</Link>
 

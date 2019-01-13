@@ -6,7 +6,7 @@ const Votes = ({ vote, votes, article_id }) => {
       <button onClick={() => vote(1, article_id)} className="votingButton">
         Up vote
       </button>
-      <h6>{votes}</h6>
+      <h6 className="votesOnArticle">{votes}</h6>
       <button onClick={() => vote(-1, article_id)} className="votingButton">
         Down vote
       </button>

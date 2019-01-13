@@ -76,12 +76,13 @@ ul {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin: 5px;
+  margin: 1%;
+  padding: 0%;
 }
 
 .articleTitle {
-  margin-top: 0;
-  margin-left: 1%;
+  margin-top: 0.5;
+  margin-left: 0.5%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -108,16 +109,17 @@ p {
 .articleAuthor,
 .titleDate {
   margin: 1%;
-  margin-left: 0.3%;
-  font-size: 90%;
+  margin-left: 0.75%;
+  font-size: 100%;
 }
 
 .articleDate {
-  margin-left: 0.3%;
+  margin-left: 0.75%;
 }
 
 .articleBody {
-  margin-left: 0.75%;
+  margin-left: 1.25%;
+  font-size: 90%;
 }
 
 .articleVotes {
@@ -143,11 +145,16 @@ p {
 
 .singleArticle {
   background-color: white;
+  margin-top: 0%;
+  border: 1px solid grey;
 }
 
 h3 {
   margin-bottom: 0%;
-  margin-left: 5px;
+  margin-top: 0.5%;
+  margin-left: 0.75%;
+  padding: 0.75%;
+  font-size: 200%;
 }
 
 .loginForm {
@@ -158,6 +165,12 @@ h3 {
   background-color: lightgrey;
   padding: 10px;
   margin-right: 20px;
+}
+
+.votesOnArticle {
+  margin: 0;
+  padding: 0;
+  font-size: 200%;
 }
 
 .commentForm {
@@ -180,6 +193,15 @@ h3 {
   padding: 5px;
 }
 
+.topicLink {
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding: 5px;
+  margin-top: 5%;
+}
+
 .topicCard {
   background-color: white;
   border: 0.5px solid grey;
@@ -188,6 +210,7 @@ h3 {
 
 .commentCount {
   padding: 1%;
+  margin: 0%;
 }
 
 .votingButton {
@@ -198,8 +221,9 @@ h3 {
   border: 0.5px solid grey;
   color: white;
   padding: 0px;
-  margin-right: 0.75%;
-  margin-left: 0.75%;
+  margin-top: 0.8%;
+  margin-right: 2%;
+  margin-left: 2%;
   height: 20px;
   width: 80px;
 }
