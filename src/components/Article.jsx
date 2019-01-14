@@ -11,10 +11,11 @@ class Article extends Component {
     article: {},
     comments: [],
     currentQuery: "",
-    p: 1
+    p: 1,
+    hasVoted: false
   };
   render() {
-    const { article, comments, currentQuery } = this.state;
+    const { hasVoted, article, comments, currentQuery } = this.state;
     return (
       <div className="main">
         <div className="singleArticle">
@@ -39,6 +40,7 @@ class Article extends Component {
             article_id={this.props.article_id}
             vote={this.vote}
             votes={article.votes}
+            hasVoted={hasVoted}
           />
 
           <h5 className="commentCount">{`Comment count: ${
@@ -70,15 +72,6 @@ class Article extends Component {
   componentDidMount() {
     this.fetchArticle();
     this.fetchComments();
-  }
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState.comments.length !== this.state.comments.length) {
-      this.fetchComments();
-      this.fetchArticle();
-    }
-    if (prevState.article.votes !== this.state.article.votes) {
-      this.fetchArticle();
-    }
   }
   fetchComments = e => {
     const { article_id } = this.props;
@@ -129,6 +122,7 @@ class Article extends Component {
           }
         }));
       })
+      .then(this.setState({ hasVoted: true }))
       .catch(errorHandling);
   };
 }
