@@ -24,8 +24,8 @@ As a user of this site, you are able to:
 
 - Clone the repo
 - Navigate to the repo and cd into NC-NEWS
-### Install the dependencies using `npm install` 
-### Run`npm start` to run a local version of the site
+- Install the dependencies using `npm install` 
+- Run`npm start` to run a local version of the site
 - Use the default username to login to the site (tickle122)
 
 
